@@ -17,7 +17,9 @@ while running:
 
     pg.draw.circle(screen, "red", player_pos, 10)
     pg.draw.line(screen, "white", (50, 50), (screen.get_width() - 50, 50))
-
+    pg.draw.line(screen, "white", (50, 50), (50, screen.get_height() - 50))
+    pg.draw.line(screen, "white", (50, 50), (screen.get_width() - 50, 50))
+    pg.draw.line(screen, "white", (50, 50), (screen.get_width() - 50, 50))
     keys = pg.key.get_pressed()
     if keys[pg.K_w]:
         player_pos.y -= 300 * dt
