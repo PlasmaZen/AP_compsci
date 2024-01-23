@@ -6,6 +6,8 @@ WINDOW_SIZE = 200
 ROTATE_SPEED = 0.01
 window = pygame.display.set_mode((WINDOW_SIZE, WINDOW_SIZE))
 clock = pygame.time.Clock()
+pygame.display.set_caption('')
+pygame.display.set_icon(pygame.image.load('cube_pic.jpg'))
 
 projection_matrix = [[0.5,0,0],
                      [0,0.5,0], # affects L.W.H of rectangle
