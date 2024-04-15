@@ -18,7 +18,12 @@ def list_init():
         elif user_value == 'GENERATE':
             # generate a random list of ints with rand length ranging from 3-10 values long
             # generate how long the list is then generate each value
+            user_list.clear()
             list_length = rand.randint(3,10)
+            for i in range(list_length):
+                user_list.append(rand.randint(0, 10))
+            print(user_list)
+            return user_list
         else:
             user_list.append(user_value)
             print(user_list)
