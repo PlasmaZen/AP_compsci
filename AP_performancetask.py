@@ -5,7 +5,7 @@ global_user_list = []
 # maybe make it so the list can be a specific type I.E list of strings, list of ints, or unspecified. 
 # list of strings can be sorted alphabetically, list of int sorted by value
 
-# list init 
+# list initializer 
 def list_init():
     user_list = []
     while True:
@@ -46,6 +46,10 @@ def list_edit(user_list):
             case _:
                 print('Please input number \n')
 
-global_user_list = list_init()
-print('Your list: {}' .format(global_user_list))
-list_edit(global_user_list)
+def list_sort(user_list):
+    pass
+
+while True:
+    global_user_list = list_init()
+    print('Your list: {}' .format(global_user_list))
+    list_edit(global_user_list)
