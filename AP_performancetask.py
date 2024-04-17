@@ -9,13 +9,14 @@ global_user_list = []
 def list_init():
     user_list = []
     while True:
-        user_value = input('Command: EXIT, UNDO, GENERATE) \n Input list value: ')
-        if user_value == 'EXIT':
+        user_value = int(input('Finish: -1, Undo: -2, Generate: -3 \n Input integer: '))
+        if user_value == -1:
             print(user_list)
             return user_list
-        elif user_value == 'UNDO':
+        elif user_value == -2:
             user_list.pop()
-        elif user_value == 'GENERATE':
+            print(user_list)
+        elif user_value == -3:
             # generate a random list of ints with rand length ranging from 3-10 values long
             # generate how long the list is then generate each value
             user_list.clear()
@@ -30,26 +31,30 @@ def list_init():
 
 def list_edit(user_list):
     while True:
-        user_choice = int(input('Input choice: \n 1. Append list \n 2. Remove item \n 3. Remove specific index \n 4. Exit \n'))
+        user_choice = int(input('Append list: 1, Remove last: 2, Remove specific index: 3, Remove section: 4, Exit: 5 \n Input Integer: '))
+        if user_choice == 5:
+            break
         match user_choice:
             case 1:
-                user_value = input('Input list value: ')
+                user_value = input('Input integer: ')
                 user_list.append(user_value)
                 print(user_list)
             case 2:
-                pass
+                user_list.pop()
+                print(user_list)
             case 3:
-                pass
+                user_value = int(input('Input value to remove (List starts at 0): '))
+                user_list.pop(user_value)
+                print(user_list)
             case 4:
+                pass
+            case 5:
                 print(user_list)
                 break
             case _:
-                print('Please input number \n')
+                print('Please input valid int\n')
 
-def list_sort(user_list):
-    pass
-
+global_user_list = list_init()
 while True:
-    global_user_list = list_init()
     print('Your list: {}' .format(global_user_list))
     list_edit(global_user_list)
