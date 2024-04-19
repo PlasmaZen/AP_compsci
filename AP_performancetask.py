@@ -31,7 +31,7 @@ def list_init():
 
 def list_edit(user_list):
     while True:
-        user_choice = int(input('Append list: 1, Remove last: 2, Remove specific index: 3, Remove section: 4, Exit: 5 \n Input Integer: '))
+        user_choice = int(input('Append list: 1, Remove last: 2, Remove specific index: 3, Copy/delete section: 4, Exit: 5 \n Input Integer: '))
         if user_choice == 5:
             break
         match user_choice:
@@ -43,11 +43,14 @@ def list_edit(user_list):
                 user_list.pop()
                 print(user_list)
             case 3:
-                user_value = int(input('Input value to remove (List starts at 0): '))
+                user_value = int(input('Input value to remove (Valid nums: 0-{}): ' .format(len(user_list)-1)))
                 user_list.pop(user_value)
                 print(user_list)
             case 4:
-                pass
+                #for loop that repeatedly  
+                user_choice2 = int(input('Copy-paste section: 1, Delete section: 2 \n Input Integer:'))
+                if user_choice2 == 1:
+                    copy_range1 = int(input('Input range to copy (Valid nums: 0-{}): ' .format(len(user_list)-1)))
             case 5:
                 print(user_list)
                 break
