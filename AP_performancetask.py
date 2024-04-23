@@ -33,7 +33,7 @@ def list_edit(user_list):
     while True:
         user_choice = int(input('Append list: 1, Remove last: 2, Remove specific index: 3, Copy/delete section: 4, Exit: 5 \n Input Integer: '))
         if user_choice == 5:
-            break
+            return False
         match user_choice:
             case 1:
                 user_value = input('Input integer: ')
@@ -47,13 +47,27 @@ def list_edit(user_list):
                 user_list.pop(user_value)
                 print(user_list)
             case 4:
-                #for loop that repeatedly  
-                user_choice2 = int(input('Copy-paste section: 1, Delete section: 2 \n Input Integer:'))
+                # copy: for loop that repeats through a start and end range then joins it to global list
+                user_choice2 = int(input('Copy-paste section: 1, Delete section: 2 \n Input Integer: '))
                 if user_choice2 == 1:
-                    copy_range1 = int(input('Input range to copy (Valid nums: 0-{}): ' .format(len(user_list)-1)))
+                    copy_list = []
+                    copystart_range = int(input('Input start range to copy (Valid nums: 0-{}): ' .format(len(user_list)-1)))
+                    copyend_range = int(input('Input range to copy (Valid nums: 0-{}): ' .format(len(user_list)-1)))
+                    for i in range(copystart_range, copyend_range+1):
+                        copy_list.append(user_list[i])
+                        print()
+                    user_list.extend(copy_list)
+                    print(user_list)
+                # delete: for loop that repeatedly deletes a certain index to clear a section
+                elif user_choice2 == 2:
+                    deletestart_range = int(input('Input start range to delete (Valid nums: 0-{}): ' .format(len(user_list)-1)))
+                    deleteend_range = int(input('Input end range to delete (Valid nums: 0-{}): ' .format(len(user_list)-1)))
+                    for i in range(deleteend_range - deletestart_range+1):
+                        user_list.pop(deletestart_range)
+                    print(user_list)
             case 5:
                 print(user_list)
-                break
+                return False
             case _:
                 print('Please input valid int\n')
 
