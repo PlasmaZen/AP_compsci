@@ -5,7 +5,7 @@ global_user_list = []
 # maybe make it so the list can be a specific type I.E list of strings, list of ints, or unspecified. 
 # list of strings can be sorted alphabetically, list of int sorted by value
 
-# list initializer 
+# list initializer. creates the global list thats passed to the list_edit function
 def list_init():
     user_list = []
     while True:
@@ -31,12 +31,10 @@ def list_init():
 
 def list_edit(user_list):
     while True:
-        user_choice = int(input('Append list: 1, Remove last: 2, Remove specific index: 3, Copy/delete section: 4, Exit: 5 \n Input Integer: '))
-        if user_choice == 5:
-            return False
+        user_choice = int(input('Append list: 1, Remove last: 2, Remove specific index: 3, Copy/delete section: 4, Print list: 5 \n Input Integer: '))
         match user_choice:
             case 1:
-                user_value = input('Input integer: ')
+                user_value = int(input('Input integer: '))
                 user_list.append(user_value)
                 print(user_list)
             case 2:
@@ -58,7 +56,7 @@ def list_edit(user_list):
                         print()
                     user_list.extend(copy_list)
                     print(user_list)
-                # delete: for loop that repeatedly deletes a certain index to clear a section
+                # delete: for loop that repeatedly deletes a certain point in a list to clear a section
                 elif user_choice2 == 2:
                     deletestart_range = int(input('Input start range to delete (Valid nums: 0-{}): ' .format(len(user_list)-1)))
                     deleteend_range = int(input('Input end range to delete (Valid nums: 0-{}): ' .format(len(user_list)-1)))
@@ -67,10 +65,7 @@ def list_edit(user_list):
                     print(user_list)
             case 5:
                 print(user_list)
-                return False
-            case _:
-                print('Please input valid int\n')
-
+    
 global_user_list = list_init()
 while True:
     print('Your list: {}' .format(global_user_list))
